@@ -1,0 +1,288 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/survival_puzzle.gd" id="1_puzzle"]
+[ext_resource type="Texture2D" uid="uid://cyd56r82lh0e1" path="res://assets/Button.png" id="2_button"]
+[ext_resource type="Texture2D" uid="uid://bj8h1gnbxr6mg" path="res://assets/Button-Pressed.png" id="3_pressed"]
+[ext_resource type="AudioStream" uid="uid://6ndow082iobv" path="res://assets/rightsfx.mp3" id="4_right"]
+[ext_resource type="AudioStream" uid="uid://bmgl1movasfys" path="res://assets/wrongsfx.mp3" id="5_wrong"]
+
+[sub_resource type="StyleBoxTexture" id="Slot_empty"]
+content_margin_left = 8.0
+content_margin_top = 6.0
+content_margin_right = 8.0
+content_margin_bottom = 6.0
+texture = ExtResource("2_button")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+modulate_color = Color(0.6, 0.6, 0.65, 1)
+
+[sub_resource type="StyleBoxTexture" id="Slot_filled"]
+content_margin_left = 8.0
+content_margin_top = 6.0
+content_margin_right = 8.0
+content_margin_bottom = 6.0
+texture = ExtResource("3_pressed")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+modulate_color = Color(1.15, 1.15, 1.15, 1)
+
+[sub_resource type="StyleBoxFlat" id="Board_bg"]
+content_margin_left = 14.0
+content_margin_top = 10.0
+content_margin_right = 14.0
+content_margin_bottom = 12.0
+bg_color = Color(0.1, 0.06, 0.12, 0.8)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxTexture" id="Popup_bg"]
+content_margin_left = 28.0
+content_margin_top = 22.0
+content_margin_right = 28.0
+content_margin_bottom = 22.0
+texture = ExtResource("2_button")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="Btn_normal"]
+content_margin_left = 22.0
+content_margin_top = 8.0
+content_margin_right = 22.0
+content_margin_bottom = 10.0
+texture = ExtResource("2_button")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+modulate_color = Color(1.2, 1.2, 1.2, 1)
+
+[sub_resource type="StyleBoxTexture" id="Btn_hover"]
+content_margin_left = 22.0
+content_margin_top = 8.0
+content_margin_right = 22.0
+content_margin_bottom = 10.0
+texture = ExtResource("2_button")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+modulate_color = Color(1.45, 1.45, 1.45, 1)
+
+[sub_resource type="StyleBoxTexture" id="Btn_pressed"]
+content_margin_left = 22.0
+content_margin_top = 10.0
+content_margin_right = 22.0
+content_margin_bottom = 8.0
+texture = ExtResource("3_pressed")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxEmpty" id="Btn_focus"]
+
+[node name="PuzzleUI" type="CanvasLayer"]
+script = ExtResource("1_puzzle")
+empty_slot_style = SubResource("Slot_empty")
+filled_slot_style = SubResource("Slot_filled")
+
+[node name="Board" type="PanelContainer" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 100.0
+offset_top = -150.0
+offset_right = 760.0
+offset_bottom = -24.0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("Board_bg")
+
+[node name="VBox" type="VBoxContainer" parent="Board"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="Board/VBox"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.1, 0.05, 0.1, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 17
+text = "Keep the colony alive! Click what they need most, in order:"
+horizontal_alignment = 1
+
+[node name="Slots" type="HBoxContainer" parent="Board/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Slot1" type="PanelContainer" parent="Board/VBox/Slots"]
+custom_minimum_size = Vector2(118, 62)
+layout_mode = 2
+theme_override_styles/panel = SubResource("Slot_empty")
+
+[node name="Label" type="Label" parent="Board/VBox/Slots/Slot1"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.1, 0.05, 0.1, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 16
+text = "1
+?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slot2" type="PanelContainer" parent="Board/VBox/Slots"]
+custom_minimum_size = Vector2(118, 62)
+layout_mode = 2
+theme_override_styles/panel = SubResource("Slot_empty")
+
+[node name="Label" type="Label" parent="Board/VBox/Slots/Slot2"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.1, 0.05, 0.1, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 16
+text = "2
+?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slot3" type="PanelContainer" parent="Board/VBox/Slots"]
+custom_minimum_size = Vector2(118, 62)
+layout_mode = 2
+theme_override_styles/panel = SubResource("Slot_empty")
+
+[node name="Label" type="Label" parent="Board/VBox/Slots/Slot3"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.1, 0.05, 0.1, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 16
+text = "3
+?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slot4" type="PanelContainer" parent="Board/VBox/Slots"]
+custom_minimum_size = Vector2(118, 62)
+layout_mode = 2
+theme_override_styles/panel = SubResource("Slot_empty")
+
+[node name="Label" type="Label" parent="Board/VBox/Slots/Slot4"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.1, 0.05, 0.1, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 16
+text = "4
+?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slot5" type="PanelContainer" parent="Board/VBox/Slots"]
+custom_minimum_size = Vector2(118, 62)
+layout_mode = 2
+theme_override_styles/panel = SubResource("Slot_empty")
+
+[node name="Label" type="Label" parent="Board/VBox/Slots/Slot5"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.1, 0.05, 0.1, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 16
+text = "5
+?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WeatherPanel" type="PanelContainer" parent="."]
+offset_left = 336.0
+offset_top = 72.0
+offset_right = 536.0
+offset_bottom = 120.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Board_bg")
+
+[node name="WeatherBadge" type="Label" parent="WeatherPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.1, 0.05, 0.1, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 14
+text = "Curiosity - Sol 0
+Low 0°C   High 0°C"
+horizontal_alignment = 1
+
+[node name="Popup" type="ColorRect" parent="."]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.55)
+
+[node name="Panel" type="PanelContainer" parent="Popup"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -130.0
+offset_right = 250.0
+offset_bottom = 130.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("Popup_bg")
+
+[node name="VBox" type="VBoxContainer" parent="Popup/Panel"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="PopupTitle" type="Label" parent="Popup/Panel/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.86, 0.35, 1)
+theme_override_colors/font_outline_color = Color(0.1, 0.05, 0.1, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 28
+text = "Oh no!"
+horizontal_alignment = 1
+
+[node name="PopupText" type="Label" parent="Popup/Panel/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.1, 0.05, 0.1, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 18
+text = "Hint text"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="PopupButton" type="Button" parent="Popup/Panel/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_outline_color = Color(0.1, 0.05, 0.1, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("Btn_normal")
+theme_override_styles/hover = SubResource("Btn_hover")
+theme_override_styles/pressed = SubResource("Btn_pressed")
+theme_override_styles/focus = SubResource("Btn_focus")
+text = "Got it!"
+
+[node name="RightSfx" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_right")
+
+[node name="WrongSfx" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("5_wrong")

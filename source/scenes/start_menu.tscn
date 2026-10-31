@@ -1,0 +1,179 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/start_menu.gd" id="1_menu"]
+[ext_resource type="Texture2D" uid="uid://o46d60aoqe25" path="res://assets/MarsLevelFixed.png" id="2_bg"]
+[ext_resource type="Texture2D" uid="uid://cyd56r82lh0e1" path="res://assets/Button.png" id="3_button"]
+[ext_resource type="Texture2D" uid="uid://bj8h1gnbxr6mg" path="res://assets/Button-Pressed.png" id="4_pressed"]
+[ext_resource type="PackedScene" path="res://scenes/colonist.tscn" id="5_colonist"]
+[ext_resource type="Texture2D" uid="uid://bnqektloxkph8" path="res://assets/Nini.png" id="6_nini"]
+[ext_resource type="Texture2D" uid="uid://beracngxvaxds" path="res://assets/Vivi.png" id="7_vivi"]
+[ext_resource type="Texture2D" uid="uid://cfygqsaxt6qei" path="res://assets/Wiwi.png" id="8_wiwi"]
+[ext_resource type="AudioStream" uid="uid://bv0blfjrmkpjj" path="res://assets/happymusic.wav" id="9_music"]
+[ext_resource type="Script" path="res://scripts/day_night_background.gd" id="20_daynight"]
+[ext_resource type="Texture2D" uid="uid://bv72gl7qutdkt" path="res://assets/NightMarsLevel.png" id="21_night"]
+
+[sub_resource type="StyleBoxTexture" id="Panel_bg"]
+content_margin_left = 36.0
+content_margin_top = 26.0
+content_margin_right = 36.0
+content_margin_bottom = 28.0
+texture = ExtResource("3_button")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="Steps_bg"]
+content_margin_left = 18.0
+content_margin_top = 12.0
+content_margin_right = 18.0
+content_margin_bottom = 12.0
+bg_color = Color(0.1, 0.06, 0.12, 0.45)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxTexture" id="Btn_normal"]
+content_margin_left = 40.0
+content_margin_top = 10.0
+content_margin_right = 40.0
+content_margin_bottom = 12.0
+texture = ExtResource("3_button")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+modulate_color = Color(1.2, 1.2, 1.2, 1)
+
+[sub_resource type="StyleBoxTexture" id="Btn_hover"]
+content_margin_left = 40.0
+content_margin_top = 10.0
+content_margin_right = 40.0
+content_margin_bottom = 12.0
+texture = ExtResource("3_button")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+modulate_color = Color(1.45, 1.45, 1.45, 1)
+
+[sub_resource type="StyleBoxTexture" id="Btn_pressed"]
+content_margin_left = 40.0
+content_margin_top = 12.0
+content_margin_right = 40.0
+content_margin_bottom = 10.0
+texture = ExtResource("4_pressed")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxEmpty" id="Btn_focus"]
+
+[node name="StartMenu" type="Node2D"]
+script = ExtResource("1_menu")
+
+[node name="BG" type="Sprite2D" parent="."]
+script = ExtResource("20_daynight")
+position = Vector2(-25, 4)
+scale = Vector2(0.6, 0.52317065)
+texture = ExtResource("2_bg")
+night_texture = ExtResource("21_night")
+centered = false
+
+[node name="Colonists" type="Node2D" parent="."]
+
+[node name="Jojo" parent="Colonists" instance=ExtResource("5_colonist")]
+position = Vector2(140, 560)
+scale = Vector2(2, 2)
+colonist_name = "Jojo"
+
+[node name="Nini" parent="Colonists" instance=ExtResource("5_colonist")]
+position = Vector2(230, 560)
+scale = Vector2(2, 2)
+colonist_name = "Nini"
+sprite_sheet = ExtResource("6_nini")
+
+[node name="Vivi" parent="Colonists" instance=ExtResource("5_colonist")]
+position = Vector2(922, 560)
+scale = Vector2(2, 2)
+colonist_name = "Vivi"
+sprite_sheet = ExtResource("7_vivi")
+
+[node name="Wiwi" parent="Colonists" instance=ExtResource("5_colonist")]
+position = Vector2(1012, 560)
+scale = Vector2(2, 2)
+colonist_name = "Wiwi"
+sprite_sheet = ExtResource("8_wiwi")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Center" type="CenterContainer" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="PanelContainer" parent="UI/Center"]
+custom_minimum_size = Vector2(580, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("Panel_bg")
+
+[node name="VBox" type="VBoxContainer" parent="UI/Center/Panel"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Title" type="Label" parent="UI/Center/Panel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.86, 0.35, 1)
+theme_override_colors/font_outline_color = Color(0.1, 0.05, 0.1, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 46
+text = "Mars Landing"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="UI/Center/Panel/VBox"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.1, 0.05, 0.1, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 20
+text = "Your colonists just landed on Mars!
+Can you help them survive?"
+horizontal_alignment = 1
+
+[node name="Steps" type="PanelContainer" parent="UI/Center/Panel/VBox"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("Steps_bg")
+
+[node name="HowToPlay" type="Label" parent="UI/Center/Panel/VBox/Steps"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.1, 0.05, 0.1, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/line_spacing = 6
+theme_override_font_sizes/font_size = 18
+text = "How to play:
+1. Click on things in the colony, like the water tanks.
+2. Pick what your colonists need MOST first.
+3. Fill all 5 boxes in the right order to win!
+4. Wrong pick? A colonist goes home. Read the hint!"
+
+[node name="StartButton" type="Button" parent="UI/Center/Panel/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_outline_color = Color(0.1, 0.05, 0.1, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("Btn_normal")
+theme_override_styles/hover = SubResource("Btn_hover")
+theme_override_styles/pressed = SubResource("Btn_pressed")
+theme_override_styles/focus = SubResource("Btn_focus")
+text = "Start"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_music")
+volume_db = -6.0
+autoplay = true

@@ -1,0 +1,164 @@
+[gd_scene format=3 uid="uid://csbjxdvua7lds"]
+
+[ext_resource type="Texture2D" uid="uid://o46d60aoqe25" path="res://assets/MarsLevelFixed.png" id="1_jbj1t"]
+[ext_resource type="PackedScene" path="res://scenes/colonist.tscn" id="2_colonist"]
+[ext_resource type="Texture2D" uid="uid://bnqektloxkph8" path="res://assets/Nini.png" id="3_nini"]
+[ext_resource type="Texture2D" uid="uid://beracngxvaxds" path="res://assets/Vivi.png" id="4_vivi"]
+[ext_resource type="Texture2D" uid="uid://cfygqsaxt6qei" path="res://assets/Wiwi.png" id="5_wiwi"]
+[ext_resource type="AudioStream" uid="uid://bv0blfjrmkpjj" path="res://assets/happymusic.wav" id="6_tefeu"]
+[ext_resource type="Texture2D" uid="uid://c7yucxll8f7l6" path="res://assets/LandingSpot.png" id="7_landing"]
+[ext_resource type="Texture2D" uid="uid://bwc548om8urgx" path="res://assets/water.png" id="8_water"]
+[ext_resource type="Texture2D" uid="uid://bg3venyqaldqj" path="res://assets/water2.png" id="9_water2"]
+[ext_resource type="Texture2D" uid="uid://isrpvf0jb70d" path="res://assets/Carrots.png" id="10_carrots"]
+[ext_resource type="Texture2D" uid="uid://exj0ovfhy7p6" path="res://assets/Potatoes.png" id="11_potatoes"]
+[ext_resource type="Texture2D" uid="uid://bwn0mveoh261g" path="res://assets/Shelter.png" id="12_shelter"]
+[ext_resource type="Texture2D" uid="uid://dg1fce5hjmkwg" path="res://assets/OxygenTank.png" id="13_oxygen"]
+[ext_resource type="Texture2D" uid="uid://bsgh1cgb726xy" path="res://assets/Silo.png" id="14_silo"]
+[ext_resource type="Script" uid="uid://beyek2imlqpbq" path="res://scripts/survival_item.gd" id="15_item"]
+[ext_resource type="PackedScene" path="res://scenes/puzzle_ui.tscn" id="16_puzzle"]
+[ext_resource type="Script" uid="uid://bs28ibx5qo0ry" path="res://scripts/day_night_background.gd" id="20_daynight"]
+[ext_resource type="Texture2D" uid="uid://bv72gl7qutdkt" path="res://assets/NightMarsLevel.png" id="21_night"]
+[ext_resource type="Texture2D" uid="uid://cd0gymak3ofw5" path="res://assets/seed.png" id="22_seed"]
+[ext_resource type="Texture2D" uid="uid://cjkqi61vu13v2" path="res://assets/sprout.png" id="23_sprout"]
+
+[node name="Main" type="Node2D" unique_id=567099598]
+
+[node name="BG" type="Sprite2D" parent="." unique_id=555128555]
+position = Vector2(-25, 3.9999998)
+scale = Vector2(0.59999996, 0.52317065)
+texture = ExtResource("1_jbj1t")
+centered = false
+script = ExtResource("20_daynight")
+night_texture = ExtResource("21_night")
+
+[node name="Structures" type="Node2D" parent="." unique_id=1945734884]
+
+[node name="LandingSpot" type="Sprite2D" parent="Structures" unique_id=1185744576]
+position = Vector2(667.5, 134.49997)
+scale = Vector2(0.08518144, 0.08215728)
+texture = ExtResource("7_landing")
+
+[node name="Water" type="Sprite2D" parent="Structures" unique_id=1732333578]
+position = Vector2(160, 120)
+scale = Vector2(2, 2)
+texture = ExtResource("8_water")
+script = ExtResource("15_item")
+item_id = "water"
+
+[node name="Water2" type="Sprite2D" parent="Structures" unique_id=1744292140]
+position = Vector2(270, 120)
+scale = Vector2(2, 2)
+texture = ExtResource("9_water2")
+script = ExtResource("15_item")
+item_id = "water"
+
+[node name="Carrots" type="Sprite2D" parent="Structures" unique_id=598206916]
+position = Vector2(150.5, 385.5)
+scale = Vector2(0.05796371, 0.06300404)
+texture = ExtResource("10_carrots")
+script = ExtResource("15_item")
+item_id = "food"
+growth_stages = Array[Texture2D]([ExtResource("22_seed"), ExtResource("23_sprout")])
+
+[node name="Potatoes" type="Sprite2D" parent="Structures" unique_id=12822661]
+position = Vector2(286, 391.5)
+scale = Vector2(0.06451612, 0.05695565)
+texture = ExtResource("11_potatoes")
+script = ExtResource("15_item")
+item_id = "food"
+growth_stages = Array[Texture2D]([ExtResource("22_seed"), ExtResource("23_sprout")])
+
+[node name="Shelter" type="Sprite2D" parent="Structures" unique_id=886307517]
+position = Vector2(1024, 107.00001)
+scale = Vector2(0.11239922, 0.091733895)
+texture = ExtResource("12_shelter")
+script = ExtResource("15_item")
+item_id = "shelter"
+
+[node name="OxygenTank" type="Sprite2D" parent="Structures" unique_id=941464595]
+position = Vector2(918, 221.00002)
+scale = Vector2(0.0322581, 0.0322581)
+texture = ExtResource("13_oxygen")
+script = ExtResource("15_item")
+item_id = "oxygen"
+
+[node name="Silo" type="Sprite2D" parent="Structures" unique_id=1362848069]
+position = Vector2(1051, 521)
+scale = Vector2(4.906248, 6.3593755)
+texture = ExtResource("14_silo")
+script = ExtResource("15_item")
+item_id = "storage"
+
+[node name="Spots" type="Node2D" parent="." unique_id=921026848]
+
+[node name="Water" type="Marker2D" parent="Spots" unique_id=1586242921 groups=["colony_spot"]]
+position = Vector2(215, 200)
+
+[node name="Crops" type="Marker2D" parent="Spots" unique_id=2059190596 groups=["colony_spot"]]
+position = Vector2(220, 315)
+
+[node name="Landing" type="Marker2D" parent="Spots" unique_id=1205221073 groups=["colony_spot"]]
+position = Vector2(667, 250)
+
+[node name="Oxygen" type="Marker2D" parent="Spots" unique_id=1908982359 groups=["colony_spot"]]
+position = Vector2(918, 285)
+
+[node name="Shelter" type="Marker2D" parent="Spots" unique_id=1730275837 groups=["colony_spot"]]
+position = Vector2(1015, 228)
+
+[node name="Silo" type="Marker2D" parent="Spots" unique_id=182352596 groups=["colony_spot"]]
+position = Vector2(925, 520)
+
+[node name="Colonists" type="Node2D" parent="." unique_id=745141009]
+y_sort_enabled = true
+
+[node name="Jojo" parent="Colonists" unique_id=996053449 instance=ExtResource("2_colonist")]
+position = Vector2(425, 380)
+scale = Vector2(2, 2)
+colonist_name = "Jojo"
+walk_speed = 45.0
+idle_time = Vector2(2, 4)
+chattiness = 0.25
+favorite_spot = &"Crops"
+catchphrase = "Gotta water these!"
+
+[node name="Nini" parent="Colonists" unique_id=1469953725 instance=ExtResource("2_colonist")]
+position = Vector2(525, 380)
+scale = Vector2(2, 2)
+colonist_name = "Nini"
+sprite_sheet = ExtResource("3_nini")
+walk_speed = 60.0
+idle_time = Vector2(1, 2.5)
+chattiness = 0.6
+catchphrase = "Guess what?!"
+
+[node name="Vivi" parent="Colonists" unique_id=188453906 instance=ExtResource("2_colonist")]
+position = Vector2(625, 380)
+scale = Vector2(2, 2)
+colonist_name = "Vivi"
+sprite_sheet = ExtResource("4_vivi")
+walk_speed = 80.0
+idle_time = Vector2(0.5, 1.5)
+chattiness = 0.2
+favorite_spot = &"Oxygen"
+catchphrase = "Systems nominal!"
+
+[node name="Wiwi" parent="Colonists" unique_id=1024856826 instance=ExtResource("2_colonist")]
+position = Vector2(725, 380)
+scale = Vector2(2, 2)
+colonist_name = "Wiwi"
+sprite_sheet = ExtResource("5_wiwi")
+walk_speed = 35.0
+idle_time = Vector2(3, 6)
+chattiness = 0.35
+favorite_spot = &"Shelter"
+catchphrase = "So cozy..."
+
+[node name="BGMusic" type="AudioStreamPlayer" parent="." unique_id=330269150]
+stream = ExtResource("6_tefeu")
+volume_db = -6.0
+autoplay = true
+
+[node name="PuzzleUI" parent="." unique_id=1587189889 node_paths=PackedStringArray("structures", "colonists") instance=ExtResource("16_puzzle")]
+structures = NodePath("../Structures")
+colonists = NodePath("../Colonists")

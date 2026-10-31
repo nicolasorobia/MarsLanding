@@ -1,0 +1,130 @@
+{
+  "credit": "Data: NASA/JPL-Caltech/CAB (Curiosity rover REMS weather station)",
+  "source": "https://mars.nasa.gov/rss/api/?feed=weather&category=msl&feedtype=json",
+  "sols_with_data": 4717,
+  "first_earth_date": "2012-08-16",
+  "last_earth_date": "2026-08-25",
+  "coldest": {
+    "temp_c": -100,
+    "sol": 2803,
+    "earth_date": "2020-06-25"
+  },
+  "warmest": {
+    "temp_c": 11,
+    "sol": 760,
+    "earth_date": "2014-09-25"
+  },
+  "avg_low_c": -74.6,
+  "avg_high_c": -12.2,
+  "avg_daily_swing_c": 62.3,
+  "biggest_daily_swing_c": 106,
+  "pressure_pa": {
+    "min": 679,
+    "max": 925,
+    "avg": 817
+  },
+  "pressure_percent_of_earth": 0.81,
+  "uv_days": {
+    "Moderate": 2812,
+    "High": 1519,
+    "Very_High": 284,
+    "Low": 102
+  },
+  "by_mars_month": [
+    {
+      "mars_month": 1,
+      "avg_min_temp_c": -75.7,
+      "avg_max_temp_c": -16.1,
+      "avg_pressure_pa": 842,
+      "sols": 403
+    },
+    {
+      "mars_month": 2,
+      "avg_min_temp_c": -78.4,
+      "avg_max_temp_c": -23.1,
+      "avg_pressure_pa": 869,
+      "sols": 428
+    },
+    {
+      "mars_month": 3,
+      "avg_min_temp_c": -81.4,
+      "avg_max_temp_c": -27.2,
+      "avg_pressure_pa": 857,
+      "sols": 458
+    },
+    {
+      "mars_month": 4,
+      "avg_min_temp_c": -80.8,
+      "avg_max_temp_c": -24.7,
+      "avg_pressure_pa": 788,
+      "sols": 442
+    },
+    {
+      "mars_month": 5,
+      "avg_min_temp_c": -77.4,
+      "avg_max_temp_c": -14.9,
+      "avg_pressure_pa": 727,
+      "sols": 388
+    },
+    {
+      "mars_month": 6,
+      "avg_min_temp_c": -73.2,
+      "avg_max_temp_c": -6.5,
+      "avg_pressure_pa": 723,
+      "sols": 405
+    },
+    {
+      "mars_month": 7,
+      "avg_min_temp_c": -70.5,
+      "avg_max_temp_c": -2.5,
+      "avg_pressure_pa": 771,
+      "sols": 380
+    },
+    {
+      "mars_month": 8,
+      "avg_min_temp_c": -68.3,
+      "avg_max_temp_c": -2.1,
+      "avg_pressure_pa": 848,
+      "sols": 373
+    },
+    {
+      "mars_month": 9,
+      "avg_min_temp_c": -69.8,
+      "avg_max_temp_c": -3.4,
+      "avg_pressure_pa": 886,
+      "sols": 330
+    },
+    {
+      "mars_month": 10,
+      "avg_min_temp_c": -71.2,
+      "avg_max_temp_c": -2.9,
+      "avg_pressure_pa": 861,
+      "sols": 342
+    },
+    {
+      "mars_month": 11,
+      "avg_min_temp_c": -71.2,
+      "avg_max_temp_c": -5.9,
+      "avg_pressure_pa": 829,
+      "sols": 386
+    },
+    {
+      "mars_month": 12,
+      "avg_min_temp_c": -73.2,
+      "avg_max_temp_c": -9.3,
+      "avg_pressure_pa": 819,
+      "sols": 382
+    }
+  ],
+  "latest": {
+    "sol": 4995,
+    "earth_date": "2026-08-25",
+    "mars_month": 12,
+    "min_temp_c": -71,
+    "max_temp_c": -5,
+    "pressure_pa": 777,
+    "uv": "Moderate",
+    "sunrise": "06:46",
+    "sunset": "18:51"
+  }
+}

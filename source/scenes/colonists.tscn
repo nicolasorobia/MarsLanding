@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://rxknkabdledj"]
+
+[ext_resource type="Texture2D" uid="uid://b4p1gsuukvt0n" path="res://assets/Jojo.png" id="1_njs2u"]
+
+[sub_resource type="Animation" id="Animation_ic241"]
+resource_name = "idle"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fs3qh"]
+_data = {
+&"idle": SubResource("Animation_ic241")
+}
+
+[node name="Colonists" type="Node2D" unique_id=1934408091]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1586231303]
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=2118303291]
+texture = ExtResource("1_njs2u")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody2D" unique_id=1408505375]
+libraries/ = SubResource("AnimationLibrary_fs3qh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1331008559]
