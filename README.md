@@ -2,14 +2,14 @@
 
 An educational game that teaches kids what colonists need first to survive on Mars. Players pick the colony's needs in the right priority order. The hints and weather report use real data from NASA's Curiosity rover.
 
-**Play it:** https://nicolasorobia.github.io/MarsLanding/
+**Play it:** https://nicolasorobia.github.io/MarsLanding/web/
 
 ## What's in this repo
 
 | Folder | Contents |
 |---|---|
 | `source/` | The full Godot 4.7.1 project: scenes, scripts, shaders, art, music and NASA data |
-| (root) | The exported web build that GitHub Pages serves |
+| `web/` | The exported web build that GitHub Pages serves |
 
 ## Opening the source
 
