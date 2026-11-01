@@ -20,8 +20,8 @@ An educational game that teaches kids what colonists need first to survive on Ma
 ## Where the main code lives
 
 - `source/scripts/survival_puzzle.gd`: the puzzle (correct order, right and wrong picks, hints, weather report)
-- `source/scripts/survival_item.gd`: clickable structures (gray until placed, crop growth)
-- `source/scripts/colonist.gd`: colonist wandering, personalities and chat
+- `source/scripts/survival_item.gd`: clickable structures (gray until placed)
+- `source/scripts/colonist.gd`: colonist wandering & chatting
 - `source/scripts/mars_data.gd`: NASA data loading, the live feed and the Mars clock
 - `source/scripts/day_night_background.gd`: day and night background following Mars time
 - `source/tools/fetch_nasa_data.py`: downloads and cleans the Curiosity weather data
